@@ -1,19 +1,39 @@
-<table class="highlight">
-  <thead>
-  <tr>
-    <th>Название</th>
-    <th>Количество</th>
-    <th>Цена</th>
-    <th></th>
-  </tr>
-  </thead>
+<div *ngIf="positions$ | async as positions; else loader">
+  <table class="highlight" *ngIf="positions.length > 0; else empty">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Стоимость</th>
+      <th>Количество</th>
+      <th></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <tr>
-    <td>Alvin</td>
-    <td>3</td>
-    <td>$0.87</td>
-    <td><i class="material-icons pointer">delete</i></td>
-  </tr>
-  </tbody>
-</table>
+    <tbody>
+    <tr *ngFor="let position of positions">
+      <td>{{position.name}}</td>
+      <td>{{position.cost}} руб.</td>
+      <td>
+        <div class="input-field inline order-position-input">
+          <input type="number"  min="1"  [(ngModel)]="position.quantity">
+        </div>
+      </td>
+      <td>
+        <button
+          class="btn waves-effect wavers-light btn-small"
+          (click)="addToOrder(position)"
+          [disabled]="!position.quantity"
+        >Добавить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #empty>
+    <div class="center">В данной категории пока нет позиций.</div>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
