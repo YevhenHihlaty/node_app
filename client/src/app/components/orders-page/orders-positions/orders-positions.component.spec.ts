@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SiteLayoutComponent } from './site-layout.component';
+import { OrdersPositionsComponent } from './orders-positions.component';
 
-describe('SiteLayoutComponent', () => {
-  let component: SiteLayoutComponent;
-  let fixture: ComponentFixture<SiteLayoutComponent>;
+describe('OrdersPositionsComponent', () => {
+  let component: OrdersPositionsComponent;
+  let fixture: ComponentFixture<OrdersPositionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SiteLayoutComponent ]
+      declarations: [ OrdersPositionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SiteLayoutComponent);
+    fixture = TestBed.createComponent(OrdersPositionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
