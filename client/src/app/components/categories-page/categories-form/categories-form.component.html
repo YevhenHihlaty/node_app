@@ -1,8 +1,8 @@
 <div class="page-title">
   <h4>
-    <a routerLink="/categories">Категории</a>
+    <a routerLink="/categories">Categories</a>
     <i class="material-icons">keyboard_arrow_right</i>
-    {{isNew ? 'Добавить' : 'Редактировать'}} категорию
+    {{isNew ? 'Create' : 'Change'}} category
   </h4>
   <span>
     <button
@@ -24,13 +24,13 @@
         type="text"
         [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
       >
-      <label for="name">Название</label>
+      <label for="name">Name</label>
       <span
         class="helper-text red-text"
         *ngIf="form.get('name').invalid && form.get('name').touched"
       >
         <span *ngIf="form.get('name').errors['required']">
-          Имя категории не может быть пустым.
+          Name required.
         </span>
       </span>
     </div>
@@ -49,7 +49,7 @@
         class="waves-effect waves-light btn orange lighten-2 mb2"
       >
         <i class="material-icons left">backup</i>
-        Загрузить изображение
+        Upload image
       </button>
     </div>
 
@@ -59,7 +59,7 @@
         [disabled]="form.invalid || form.disabled"
         class="waves-effect waves-light btn"
       >
-        Сохранить изменения
+        Save changes
       </button>
     </div>
   </form>

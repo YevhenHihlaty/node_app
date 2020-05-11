@@ -101,7 +101,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
         position => {
           const idx = this.positions.findIndex(p => p._id === position._id)
           this.positions[idx] = position
-          MaterialService.toast('Изменения сохранены')
+          MaterialService.toast('Changes saved')
         },
         error => MaterialService.toast(error.error.message),
         completed
@@ -109,7 +109,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
     } else {
       this.positionsService.create(newPosition).subscribe(
         position => {
-          MaterialService.toast('Позиция создана')
+          MaterialService.toast('Position created')
           this.positions.push(position)
         },
         error => MaterialService.toast(error.error.message),

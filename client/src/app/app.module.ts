@@ -20,6 +20,8 @@ import {HistoryPageComponent} from "./components/history-page/history-page.compo
 import {OrdersPageComponent} from "./components/orders-page/orders-page.component";
 import {OrdersCategoriesComponent} from './components/orders-page/orders-categories/orders-categories.component';
 import {OrdersPositionsComponent} from './components/orders-page/orders-positions/orders-positions.component';
+import { HistoryFilterComponent } from './components/history-page/history-filter/history-filter.component';
+import { HistoryListComponent } from './components/history-page/history-list/history-list.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import {OrdersPositionsComponent} from './components/orders-page/orders-position
     HistoryPageComponent,
     OrdersPageComponent,
     OrdersCategoriesComponent,
-    OrdersPositionsComponent
+    OrdersPositionsComponent,
+    HistoryFilterComponent,
+    HistoryListComponent
   ],
   imports: [
     BrowserModule,

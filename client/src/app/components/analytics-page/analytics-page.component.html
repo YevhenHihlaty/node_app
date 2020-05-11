@@ -1,3 +1,22 @@
-<p>
-  analytics-page works!
-</p>
+<div class="page-title"
+     [style.display]=" pending ? 'none': 'block'">
+  <h4>Analytics</h4>
+</div>
+<div>
+  <div class="average-price">
+    <p>Average check <strong>{{average | currency: 'USD'}}</strong></p>
+  </div>
+
+  <div class="analytics-block pb3">
+    <h5>Income</h5>
+    <canvas #income></canvas>
+  </div>
+
+  <div class="analytics-block">
+    <h5>Orders</h5>
+    <canvas #order></canvas>
+  </div>
+</div>
+
+<app-loader *ngIf="pending"></app-loader>
+

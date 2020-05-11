@@ -4,13 +4,10 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable()
-export class OrdersService {
+export class OrderService {
 
-  public list: OrderPosition[] = [];
-  public totalPrice: number = 0;
-
-  constructor(private httpClient: HttpClient) {
-  }
+  public list: OrderPosition[] = []
+  public totalPrice = 0
 
   add(position: Position) {
     const orderPosition: OrderPosition = Object.assign({}, {
@@ -19,32 +16,34 @@ export class OrdersService {
       quantity: position.quantity,
       _id: position._id
     })
-    const candidate = this.list.find(pos => pos._id === position._id);
+
+    const candidate = this.list.find(p => p._id === orderPosition._id)
+
     if (candidate) {
-      candidate.quantity += position.quantity;
+      // Изменяем кол-во
+      candidate.quantity += orderPosition.quantity
     } else {
-      this.list.push(orderPosition);
+      this.list.push(orderPosition)
     }
-    this.computePrice();
+
+    this.computePrice()
   }
 
-  remove(positionOrder: OrderPosition) {
-    const index = this.list.findIndex(pos => pos._id === positionOrder._id);
-    this.list.splice(index, 1);
-    this.computePrice();
+  remove(orderPosition: OrderPosition) {
+    const idx = this.list.findIndex(p => p._id === orderPosition._id)
+    this.list.splice(idx, 1)
+    this.computePrice()
   }
 
-  computePrice() {
-    this.totalPrice = this.list.reduce((total, item) => {
-      return total += item.quantity * item.cost;
-    }, 0);
-
-  }
-
-  create(order: Order): Observable<Order>{
-
-    return this.httpClient.post<Order>('/api/order', order);
-  }
   clear() {
+    this.list = []
+    this.totalPrice = 0
   }
+
+  private computePrice() {
+    this.totalPrice = this.list.reduce((total, item) => {
+      return total += item.quantity * item.cost
+    }, 0)
+  }
+
 }

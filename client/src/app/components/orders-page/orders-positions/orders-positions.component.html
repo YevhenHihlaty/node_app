@@ -2,9 +2,9 @@
   <table class="highlight" *ngIf="positions.length > 0; else empty">
     <thead>
     <tr>
-      <th>Название</th>
-      <th>Стоимость</th>
-      <th>Количество</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Count</th>
       <th></th>
     </tr>
     </thead>
@@ -12,7 +12,7 @@
     <tbody>
     <tr *ngFor="let position of positions">
       <td>{{position.name}}</td>
-      <td>{{position.cost}} руб.</td>
+      <td>{{position.cost | currency: 'USD'}} </td>
       <td>
         <div class="input-field inline order-position-input">
           <input type="number"  min="1"  [(ngModel)]="position.quantity">
@@ -23,14 +23,14 @@
           class="btn waves-effect wavers-light btn-small"
           (click)="addToOrder(position)"
           [disabled]="!position.quantity"
-        >Добавить</button>
+        >Add</button>
       </td>
     </tr>
     </tbody>
   </table>
 
   <ng-template #empty>
-    <div class="center">В данной категории пока нет позиций.</div>
+    <div class="center">Please add positions to the category.</div>
   </ng-template>
 </div>
 
